@@ -72,4 +72,88 @@ function add(a) {
 add(1)(2);
 ```
 
+---
+
+## 5. 作用域链
+
+首先什么是 **`作用域`**：\
+简单来说是变量的可用范围，可以使不同范围内的变量不互相干扰。\
+JS 分为 **`全局作用域`** 、 **`函数作用域`**
+
+1、函数在执行的过程中，先从自己内部寻找变量
+2、如果找不到，再从创建当前函数所在的作用域去找，从此往上，也就是向上一级找\
+上代码：
+
+```javascript
+var a = 100;
+function process() {
+  var a = 200;
+  // 此时的a 很明显是200
+  console.log(a);
+}
+
+// 但如果函数内没定义a呢
+var a = 100;
+function process() {
+  // 此时a很明显是 100
+  console.log(a);
+}
+```
+
+---
+
+## 6. 变量提升
+
+JS 中使用 var 创建变量时会存在变量提升，也就是把使用 var 创建的变量提升到当前作用域的顶部。
+
+```javascript
+var a;
+var b的是undefined;
+console.log(a); //undefined
+console.log(b); //undefined
+a = 1;
+b = 2;
+console.log(a); // 1
+console.log(b); // 2
+
+// 注意：var变量提升只是声明提升，而赋值并没有提升，比如：
+console.log(a); //undefined
+console.log(b); //undefined
+var a = 1;
+var b = 2;
+console.log(a); // 1
+console.log(b); // 2
+```
+
+**`函数提升`** 函数声明，使用函数声明的函数会存在函数提升，即将声明的函数提升到当前作用域顶部
+例如：
+
+```javascript
+a();
+function a() {
+  console.log("函数a");
+}
+
+// 相当于：
+function a() {
+  console.log("函数a");
+}
+a();
+```
+
+注意：函数提升高于变量提升，当存在同名时，在变量赋值之前函数声明还是函数声明，不会被覆盖，当变量赋值之后，函数声明将被变量覆盖。例如：
+
+```javascript
+console.log(a); // 打印的是函数
+var a = 1;
+
+console.log(a); // 1
+function a() {
+  console.log("函数a");
+}
+
+console.log(a); // 1
+// 这里正是因为函数的提升优先级高于变量，所以后面变量a就把函数给覆盖了
+```
+
 [返回](../../README.md)
