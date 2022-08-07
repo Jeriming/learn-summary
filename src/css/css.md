@@ -2,39 +2,12 @@
 
 ## 1. nth-child、last-child 伪类
 
-```html
-<style>
-  .list img {
-    background: blue;
-    width: 50px;
-    height: 50px;
-  }
-  .list > p:nth-child(even) img {
-    background: red;
-  }
-  .list > p:last-child img {
-    background: orange;
-  }
-</style>
+伪类：先匹配同层级伪类，然后再是目标标签，比如 p:last-child，先匹配该 p 的同层级的最后一个元素，然后再匹配 p,如果 p 不是该层级的最后一个元素，则未命中。详见：[伪类](./pseudo-class.md)
 
-<div class="list">
-  <p><img />1</p>
-  <p><img />2</p>
-  <div class="sub-list">
-    <p><img />3</p>
-    <p><img />4</p>
-  </div>
-  <!-- <div class="sub-list"></div> -->
-  <p><img />5</p>
-  <div class="sub-list">
-    <p><img />6</p>
-  </div>
-</div>
-```
+## 2. float
 
-运行结果：
-![image.png](./images/child-test001.png)
+HTML 默认按照 流 在页面上进行排列布局，流式布局是指利用元素 流 的特性实现各种布局。 简单说，流式布局从上到下，从左到右，块状元素独占一行，内联元素非独占
 
-结论：先匹配同层级伪类，然后再是目标标签，比如 p:last-child，先匹配该 p 的同层级的最后一个元素，然后再匹配 p,如果 p 不是该层级的最后一个元素，则未命中
+而引入 float 最初也是为了实现文字环绕图片。详见：[float](./float.md)
 
 [返回](../../README.md)
