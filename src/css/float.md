@@ -71,14 +71,13 @@ float 实现文字环绕的原理是：
 
 ![no-float.png](./images/out-float.png)
 
-解决这个问题，可以在使用float元素的父级使用clear清除浮动：
-
+解决这个问题，可以在使用 float 元素的父级使用 clear 清除浮动：
 
 ```html
 <style>
   .container::after {
     clear: both;
-    content: '';
+    content: "";
     display: block;
   }
   .image-container {
@@ -100,6 +99,8 @@ float 实现文字环绕的原理是：
 
 ![no-float.png](./images/clear-float.png)
 
-**`注意`** : clear 属性只有块级元素才有效，而::after等伪元素默认都是内联水平，所以需要设置display为block,并且需要配置content否则该元素为空同样不生效。
+**`注意`** : clear  属性只有块级元素才有效，而::after 等伪元素默认都是内联水平，所以需要设置 display 为 block,并且需要配置 content 否则该元素为空同样不生效。
+
+其他清除浮动的方法，可参考: [BFC](./bfc.md)
 
 [返回](./css.md)
