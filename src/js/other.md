@@ -7,7 +7,7 @@
 null == undefined\
 null !== undefined
 
-null的类型是object，这是由于历史原因造成的。1995年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑null，只把它当作object的一种特殊值。后来null独立出来，作为一种单独的数据类型，为了兼容以前的代码，typeof null返回object就没法改变了。
+null 的类型是 object，这是由于历史原因造成的。1995 年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑 null，只把它当作 object 的一种特殊值。后来 null 独立出来，作为一种单独的数据类型，为了兼容以前的代码，typeof null 返回 object 就没法改变了。
 
 ---
 
@@ -159,6 +159,46 @@ function a() {
 
 console.log(a); // 1
 // 这里正是因为函数的提升优先级高于变量，所以后面变量a就把函数给覆盖了
+```
+
+## 7. JavaScript 几种判断变量的类型的方法
+
+1. typeof：常用于判断基本数据类型，对于引用数据类型除了 function 返回’function‘，其余全部返回’object'
+
+2. instanceof：主要用于区分引用数据类型，检测方法是检测的类型在当前实例的原型链上，用其检测出来的结果都是 true，不太适合用于简单数据类型的检测，检测过程繁琐且对于简单数据类型中的 undefined, null, symbol 检测不出来, 例如：
+
+```javascript
+class A {}
+class B extends A {}
+const ins = new B();
+
+ins instanceof A; // true
+ins instanceof B; // true
+ins instanceof Object; // true
+
+const temp = null; // undefined, null, symbol
+tmp instanceof null; // Uncaught TypeError: Right-hand side of 'instanceof' is not an object
+```
+
+3. constructor:针对于instanceof的弊端，我们使用constructor检测，constructor是原型对象的属性指向构造函数
+```javascript
+class A {}
+class B extends A {}
+const ins = new B();
+
+ins.constructor === B; // true
+ins.constructor === A; // false
+```
+
+4. 适用于所有类型的判断检测，检测方法是 Object.prototype.toString.call(数据) 返回的是该数据类型的字符串。 这四种判断数据类型的方法中，各种数据类型都能检测且检测精准
+
+```javascript
+const nullVar = null;
+console.log(Object.prototype.toString.call(nullVar)); // [object Null]
+const undefindedVar = undefined;
+console.log(Object.prototype.toString.call(undefindedVar)); // [object Undefined]
+const symbolVar = Symbol(1);
+console.log(Object.prototype.toString.call(symbolVar)); // [object Symbol]
 ```
 
 [返回](./js.md)
