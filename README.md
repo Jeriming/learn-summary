@@ -9,3 +9,7 @@
 ## CSS篇
 
 详见：[CSS](./src/css/css.md)
+
+## 其他
+
+详见：[其他](./src/other/index.md)
