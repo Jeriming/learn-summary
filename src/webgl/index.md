@@ -2,7 +2,6 @@
 
 ### 文章列表
 
-- [CDN原理](./cdn.md)
-- [栈和堆的区别](./stack-heap.md)
+- [第一课 绘制一个点](./lesson1.md)
 
 [返回](../../README.md)
