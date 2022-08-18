@@ -13,6 +13,9 @@
 ## WebGL
 
 详见：[WebGL](./src/webgl/index.md)
+## 算法
+
+详见：[算法](./src/algorithm/index.md)
 
 ## 其他
 
