@@ -6,4 +6,6 @@
 
 ## 2. [二叉树](./binary-tree.md)
 
+## 3. [动态规划](./dynamic.md)
+
 [返回](../../README.md)
