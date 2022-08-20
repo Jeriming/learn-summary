@@ -8,4 +8,6 @@
 
 ## 3. [动态规划](./dynamic.md)
 
+## 4. [指针](./pointer.md)
+
 [返回](../../README.md)
