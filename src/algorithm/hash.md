@@ -165,4 +165,48 @@ function FindNumsAppearOnce(array) {
 }
 ```
 
+### 3. 数组中出现次数超过一半的数字
+
+给一个长度为 n 的数组，数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+例如输入一个长度为 9 的数组[1,2,3,2,2,2,5,4,2]。由于数字 2 在数组中出现了 5 次，超过数组长度的一半，因此输出 2。
+
+要求：空间复杂度：O(1)，时间复杂度 O(n)
+
+普通用哈希，一次遍历找出最大值，时间复杂度满足了，但是不满足空间复杂度 O(1)
+
+下面是最优解：\
+加入数组中存在众数，那么众数一定大于数组的长度的一半。
+思想就是：如果两个数不相等，就消去这两个数，最坏情况下，每次消去一个众数和一个非众数，那么如果存在众数，最后留下的数肯定是众数。
+
+具体做法：
+
+1. 初始化：候选人 cond = arr[0]， 候选人的投票次数 cnt = 1
+2. 遍历数组，如果 cnt=0， 表示没有候选人，则选取当前数为候选人，++cnt
+3. 否则，如果 cnt > 0, 表示有候选人，如果当前数=cond，则++cnt，否则--cnt
+4. 直到数组遍历完毕，最后检查 cond 是否为众数
+
+代码：
+
+```javascript
+function MoreThanHalfNum_Solution(numbers) {
+  // write code here
+  let cond = numbers[0];
+  let cnt = 1;
+  let len = numbers.length;
+  for (let i = 1; i < len; i++) {
+    if (cnt === 0) {
+      cond = numbers[i];
+      cnt = 1;
+    } else {
+      if (cond === numbers[i]) {
+        cnt++;
+      } else {
+        cnt--;
+      }
+    }
+  }
+  return cond;
+}
+```
+
 [返回](./index.md)
