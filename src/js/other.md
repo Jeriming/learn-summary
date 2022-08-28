@@ -180,7 +180,8 @@ const temp = null; // undefined, null, symbol
 tmp instanceof null; // Uncaught TypeError: Right-hand side of 'instanceof' is not an object
 ```
 
-3. constructor:针对于instanceof的弊端，我们使用constructor检测，constructor是原型对象的属性指向构造函数
+3. constructor:针对于 instanceof 的弊端，我们使用 constructor 检测，constructor 是原型对象的属性指向构造函数
+
 ```javascript
 class A {}
 class B extends A {}
@@ -200,5 +201,16 @@ console.log(Object.prototype.toString.call(undefindedVar)); // [object Undefined
 const symbolVar = Symbol(1);
 console.log(Object.prototype.toString.call(symbolVar)); // [object Symbol]
 ```
+
+## 8. new 会发生什么
+
+创建空对象、为对象添加属性、把新对象当作 this 的上下文、箭头函数不能作为构造函数 标准回答 `new` 关键字会进行如下的操作：
+
+1. 创建一个空的简单 JavaScript 对象（即`{}`）；
+2. 为步骤 1 新创建的对象添加属性`__proto__`，将该属性链接至构造函数的原型对象 ；
+3. 将步骤 1 新创建的对象作为`this`的上下文 ；
+4. 如果该函数没有返回对象，则返回`this`。
+
+注意： `new`关键字后面的构造函数不能是箭头函数
 
 [返回](./js.md)
