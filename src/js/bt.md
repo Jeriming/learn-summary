@@ -18,8 +18,8 @@ flag2 为 null ，null 也不等于 false，所以这题都不打印
 拓展：
 null == false; // false\
 undefined == false; // false\
-NaN == NaN; // false\
-null == undefined; // true
+NaN == NaN; // false NaN不等于任何变量，包括自己，判断NaN通过isNAN\
+null == undefined; // true\
 0 == false; // true
 
 [返回](./js.md)
