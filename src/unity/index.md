@@ -6,4 +6,6 @@
 
 ### 1. [环境准备](./environment.md)
 
+### 2. [GameObject](./gameobject.md)
+
 [返回](../../README.md)
