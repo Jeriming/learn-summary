@@ -28,3 +28,7 @@
 ## 其他
 
 详见：[其他](./src/other/index.md)
+
+## 感悟
+
+详见：[感悟](./src/comprehension/index.md)
