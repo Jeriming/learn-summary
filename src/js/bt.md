@@ -22,4 +22,7 @@ NaN == NaN; // false NaN不等于任何变量，包括自己，判断NaN通过is
 null == undefined; // true\
 0 == false; // true
 
+Object.is(0, -0); 为false
+Object.is(NaN, NaN); 为 true
+
 [返回](./js.md)
