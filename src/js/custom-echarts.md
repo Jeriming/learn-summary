@@ -6,26 +6,6 @@
 
 2. 主要通过 renderItem 函数来实现：
 
-```javascript
-renderItem: function (params, api) {
-  var yValue = api.value(2);
-  var start = api.coord([api.value(0), yValue]);
-  var size = api.size([api.value(1) - api.value(0), yValue]);
-  console.log("yValue", yValue, "start", start, "size", size);
-  var style = api.style();
-  return {
-    type: "rect",
-    shape: {
-      x: start[0],
-      y: start[1],
-      width: size[0],
-      height: size[1],
-    },
-    style: style,
-  };
-}
-```
-
 renderItem 函数提供了两个参数：
 
 params：包含了当前数据信息和坐标系的信息。\
@@ -124,12 +104,39 @@ api.coord(...)，意思是进行坐标转换计算。例如 var point = api.coor
    给定数据范围，映射到坐标系上后的长度。\
    例如，cartesian2d 中，api.size([2, 4]) 返回 [12.4, 55]，表示 x 轴数据范围为 2 映射得到长度是 12.4，y 轴数据范围为 4 时应设得到长度为 55。\
    在一些坐标系中，如极坐标系（polar）或者有 log 数轴的坐标系，不同点的长度是不同的，所以需要第二个参数，指定获取长度的点。\
+
   ```javascript
   @param {Array.<number>} dataSize 数据范围。
   @param {Array.<number>} dataItem 获取长度的点。
   @return {Array.<number>} 画布上的长度
   ```
 
-  以上三个最常见，其他的不再列举，详见eCharts官网：[arguments.api](https://echarts.apache.org/zh/option.html#series-custom.renderItem.arguments.api)
+  以上三个最常见，其他的不再列举，详见 eCharts 官网：[arguments.api](https://echarts.apache.org/zh/option.html#series-custom.renderItem.arguments.api)
+
+  5. return
+
+  renderItem 返回的必须为一个： [graphic](https://echarts.apache.org/zh/option.html#graphic.elements)，它的类型有：group、image、text、rect、circle、ring、sector、arc、polygon、polyline、line、bezierCurve，下面以官方第一示例为例：
+
+  ```javascript
+  renderItem: function (params, api) {
+  var yValue = api.value(2);
+  var start = api.coord([api.value(0), yValue]);
+  var size = api.size([api.value(1) - api.value(0), yValue]);
+  console.log("yValue", yValue, "start", start, "size", size);
+  var style = api.style();
+  return {
+    type: "rect",
+    shape: {
+      x: start[0],
+      y: start[1],
+      width: size[0],
+      height: size[1],
+    },
+    style: style,
+  };
+  }
+  ```
+
+  返回类型为 rect 矩形，shape 属性有：x,y,width,height，注意：x,y 都是图形元素的左上角在父节点坐标系（以父节点左上角为原点）中的横、纵坐标值，api.coord就会生成对应原点坐标系的坐标
 
 [返回](./js.md)
