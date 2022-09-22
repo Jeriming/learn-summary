@@ -68,4 +68,22 @@ obj.child = obj = { num2: 935 };\
 该行代码执行完成后：obj 指向了{num2: 935}，而 res 指向的是{num1: 117, child: {num2: 935 }}
 
 所以： obj.child 为 undefinded;res.num1 为 117;var x = y = res.child.num2;即：x,y 都是 935
+
+- 003 输出结果
+
+```javascript
+var a = 2;
+function fn() {
+  b();
+  return;
+  var a = 1;
+  function b() {
+    console.log(a);
+  }
+}
+fn();
+```
+
+这道题重点：变量提升、函数提升，函数提升优先级高于变量提升；还有一个最关键的，return 只能中断代码执行，但是无法终端变量提升，所以 return 后面的变量和函数命名都提升到了 fn 内的顶部，但是由于 return 中断了后面的赋值，所以打印 a 的时候为 undefinded
+
 [返回](./js.md)
