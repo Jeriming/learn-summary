@@ -60,4 +60,10 @@ align-items: center;
 </div>
 ```
 
+## 3. 背景显示特效
+```css
+background-image: radial-gradient(transparent 1px,var(--bg-color) 1px);
+backdrop-filter: saturate(50%) blur(4px);
+```
+
 [返回](./css.md)
