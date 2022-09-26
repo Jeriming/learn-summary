@@ -93,4 +93,22 @@ fn();
 017 会作为 8 进制，所以对应的十进制的数字是： 15，新数组长度为 15
 +作为一元运算符时，会将参数转换为数字返回，所以最终返回的是NaN
 
+- 005 哪个变量可以被delete
+```javascript
+var a = 1;
+b = 2;
+eval('var c = 3');
+delete a;
+delete b;
+delete c;
+```
+
+MDN: delete() delete 操作符用于删除对象的某个属性
+var, let以及const创建的不可设置的属性不能被delete操作删除
+不可配置属性configurable
+当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认值为true。
+
+b不是var声明的，可被delete删除,因此访问不了\
+eval中声明var变量是唯一一个被添加到变量名列表同时也可以被delete删除的特例，所以删除变量c有效。
+
 [返回](./js.md)
