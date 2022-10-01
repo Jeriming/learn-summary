@@ -24,5 +24,25 @@ ECMAScript 5 的严格模式是采用具有限制性 JavaScript 变体的一种�
 
 第七，ECMAScript 6 中的严格模式禁止设置primitive值的属性。不采用严格模式，设置属性将会简单忽略 (no-op),采用严格模式，将抛出TypeError错误
 
+严格模式让arguments和eval少了一些奇怪的行为，如:
+
+第一，名称 eval 和 arguments 不能通过程序语法被绑定 (be bound) 或赋值。以下的所有尝试将引起语法错误：
+```javascript
+"use strict";
+eval = 17;
+arguments++;
+++eval;
+var obj = { set p(arguments) { } };
+var eval;
+try { } catch (arguments) { }
+function x(eval) { }
+function arguments() { }
+var y = function eval() { };
+var f = new Function("arguments", "'use strict'; return 17;");
+```
+
+第二，严格模式下，参数的值不会随 arguments 对象的值的改变而变化。在正常模式下，对于第一个参数是 arg 的函数，对 arg 赋值时会同时赋值给 arguments[0]，反之亦然（除非没有参数，或者 arguments[0] 被删除）。严格模式下，函数的 arguments 对象会保存函数被调用时的原始参数。arguments[i] 的值不会随与之相应的参数的值的改变而变化，同名参数的值也不会随与之相应的 arguments[i] 的值的改变而变化。
+
+第三，不再支持 arguments.callee。正常模式下，arguments.callee 指向当前正在执行的函数。这个作用很小：直接给执行函数命名就可以了！此外，arguments.callee 十分不利于优化，例如内联函数，因为 arguments.callee 会依赖对非内联函数的引用。在严格模式下，arguments.callee 是一个不可删除属性，而且赋值和读取时都会抛出异常
 
 [返回](./js.md)
