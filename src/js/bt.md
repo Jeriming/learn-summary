@@ -34,7 +34,7 @@ let obj = {
 };
 let res = obj;
 obj.child = obj = { num2: 935 };
-var x = y = res.child.num2;
+var x = (y = res.child.num2);
 console.log(obj.child);
 console.log(res.num1);
 console.log(y);
@@ -87,13 +87,15 @@ fn();
 这道题重点：变量提升、函数提升，函数提升优先级高于变量提升；还有一个最关键的，return 只能中断代码执行，但是无法终端变量提升，所以 return 后面的变量和函数命名都提升到了 fn 内的顶部，但是由于 return 中断了后面的赋值，所以打印 a 的时候为 undefinded
 
 - 004 输出结果
-```javascript
-+new Array(017) // 这段代码输出为
-```
-017 会作为 8 进制，所以对应的十进制的数字是： 15，新数组长度为 15
-+作为一元运算符时，会将参数转换为数字返回，所以最终返回的是NaN
 
-- 005 哪个变量可以被delete
+```javascript
++new Array(017); // 这段代码输出为
+```
+
+017 会作为 8 进制，所以对应的十进制的数字是： 15，新数组长度为 15 +作为一元运算符时，会将参数转换为数字返回，所以最终返回的是 NaN
+
+- 005 哪个变量可以被 delete
+
 ```javascript
 var a = 1;
 b = 2;
@@ -104,11 +106,42 @@ delete c;
 ```
 
 MDN: delete() delete 操作符用于删除对象的某个属性
-var, let以及const创建的不可设置的属性不能被delete操作删除
-不可配置属性configurable
-当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认值为true。
+var, let 以及 const 创建的不可设置的属性不能被 delete 操作删除
+不可配置属性 configurable
+当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认值为 true。
 
-b不是var声明的，可被delete删除,因此访问不了\
-eval中声明var变量是唯一一个被添加到变量名列表同时也可以被delete删除的特例，所以删除变量c有效。
+b 不是 var 声明的，可被 delete 删除,因此访问不了\
+eval 中声明 var 变量是唯一一个被添加到变量名列表同时也可以被 delete 删除的特例，所以删除变量 c 有效。
+
+- 006 以下代码输出结果和 i 的值
+
+```javascript
+var i = 100;
+function foo() {
+  bbb: try {
+    console.log("position1");
+    return i++;
+    i++;
+  } finally {
+    break bbb;
+    i++;
+  }
+  console.log("position2");
+  return i;
+}
+foo();
+```
+
+这道题的考察点：
+
+1. 标签化语句 break
+
+注意 break 除了用于中断循环以及 switch 语句，还可以用于标签化语句的中断，这里的标签化语句即在一般语句前面多加了 xxx：的标签；上面代码，在 finnaly break 则会跳出 bbb 标签化代码块，所有后面的 i++就不会执行了
+
+2. try catch finally 中 return
+
+这里如果 try 或 catch 中有 return，此时如果遇到 finally,那这个 return 就无效，但是 return 的代码会运算， 但 return 下面的代码不会执行；所有上面的代码 i++会执行
+
+最终不管是 break; 还是 return；只要有 finally 的存在，一定会被它捕获，只有在 finally 中的 return 才会真正的函数返回。
 
 [返回](./js.md)
