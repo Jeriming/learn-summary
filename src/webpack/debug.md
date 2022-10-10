@@ -56,6 +56,67 @@ vue-cli 是通过 vue-cli-service 启动项目或打包项目的，所以修改�
 vue-cli 默认运行 vue.config.js，在该文件对应的位置加上断点，按 F5 即可运行
 ![image](./image/breakpoint.jpg)
 
-### 2. 实例： 修改默认copeWebapckPlugin配置
+### 2. 实例： 修改默认 copyWebapckPlugin 配置
+
+实例：将工程目录：src/md/ 文件夹下的所有文件拷贝到 release 包的 md 目录下
+
+乍一看很简单，copyWebapckPlugin 的功能，而 vue.config.js 添加&修改 plugins 方式：
+
+1. plugins 的新增
+
+```javascript
+config.plugin(name).use(WebpackPlugin, args);
+```
+
+2. plugins 的修改
+
+```javascript
+config.plugin(name).tap((args) => newArgs);
+```
+
+3. plugins 的删除
+
+```javascript
+config.plugins.delete(name);
+```
+
+刚开始啥也不懂搜索一番后配置：
+
+```javascript
+config.plugin("copy").use(require("copy-webpack-plugin"), [
+  [
+    {
+      from: "./src/md/",
+      to: `./${assetsDir}/md/`,
+    },
+  ],
+]);
+```
+
+经过断点调试后发现，copy 的默认拷贝 public 的配置被这个配置覆盖，导致 public 的静态资源没被拷贝，故通过断点分析后，可使用 tap
+
+```javascript
+config.plugin("copy").tap((args) => {
+  args[0].push({
+    from: "./src/md/",
+    to: `./${assetsDir}/md/`,
+  });
+  return args;
+});
+```
+
+![img](./image/copy.tap.jpg)
+
+其实还可以：
+
+```javascript
+const copyArgs = config.plugin("copy").store.get("args")[0];
+copyArgs.push({
+  from: "./src/md/",
+  to: `./${assetsDir}/md/`,
+});
+```
+
+但基于代码的规范考虑，尽量使用 webpack 对外提供的 tap 钩子，而不是直接修改配置
 
 [返回](./index.md)
