@@ -1,6 +1,6 @@
 [返回](./js.md)
 
-- 001 结果输出
+### 001 结果输出
 
 ```javascript
 let flag1 = null || undefined;
@@ -26,7 +26,7 @@ null == undefined; // true\
 Object.is(0, -0); 为 false
 Object.is(NaN, NaN); 为 true
 
-- 002 结果输出
+### 002 结果输出
 
 ```javascript
 let obj = {
@@ -69,7 +69,7 @@ obj.child = obj = { num2: 935 };\
 
 所以： obj.child 为 undefinded;res.num1 为 117;var x = y = res.child.num2;即：x,y 都是 935
 
-- 003 输出结果
+### 003 输出结果
 
 ```javascript
 var a = 2;
@@ -86,7 +86,7 @@ fn();
 
 这道题重点：变量提升、函数提升，函数提升优先级高于变量提升；还有一个最关键的，return 只能中断代码执行，但是无法终端变量提升，所以 return 后面的变量和函数命名都提升到了 fn 内的顶部，但是由于 return 中断了后面的赋值，所以打印 a 的时候为 undefinded
 
-- 004 输出结果
+### 004 输出结果
 
 ```javascript
 +new Array(017); // 这段代码输出为
@@ -94,7 +94,7 @@ fn();
 
 017 会作为 8 进制，所以对应的十进制的数字是： 15，新数组长度为 15 +作为一元运算符时，会将参数转换为数字返回，所以最终返回的是 NaN
 
-- 005 哪个变量可以被 delete
+### 005 哪个变量可以被 delete
 
 ```javascript
 var a = 1;
@@ -113,7 +113,7 @@ var, let 以及 const 创建的不可设置的属性不能被 delete 操作删�
 b 不是 var 声明的，可被 delete 删除,因此访问不了\
 eval 中声明 var 变量是唯一一个被添加到变量名列表同时也可以被 delete 删除的特例，所以删除变量 c 有效。
 
-- 006 以下代码输出结果和 i 的值
+### 006 以下代码输出结果和 i 的值
 
 ```javascript
 var i = 100;
@@ -143,5 +143,16 @@ foo();
 这里如果 try 或 catch 中有 return，此时如果遇到 finally,那这个 return 就无效，但是 return 的代码会运算， 但 return 下面的代码不会执行；所有上面的代码 i++会执行
 
 最终不管是 break; 还是 return；只要有 finally 的存在，一定会被它捕获，只有在 finally 中的 return 才会真正的函数返回。
+
+### 007 执行以下程序，输出结果为
+
+```javascript
+function a() {
+  console.log(this);
+}
+a.call(null);
+```
+
+function.call(thisArg,args1,args2...)可以调用函数 function，并且让函数内部的 this 指向 thisArg，同时传递 args1,args2 等参数。如果函数处在非严格模式下，且 thisArg 的值为 null 或者 undefined，则调用时函数内部的 this 指向 window 对象，故输出： window。
 
 [返回](./js.md)
