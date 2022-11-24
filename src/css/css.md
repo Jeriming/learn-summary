@@ -21,4 +21,8 @@ Block Formatting Contexts (块级格式化上下文)，BFC 特性的元素可以
 
 简单来说就是： 优先级关系：内联样式 > ID 选择器 > 类选择器 = 属性选择器 = 伪类选择器 > 标签选择器 = 伪元素选择器 。详见：[样式优先级](./style-priority.md)
 
+## 6. CSS 可继承和不可继承属性
+
+CSS 可继承和不可继承属性。详见：[CSS 可继承和不可继承属性](./css-extend.md)
+
 [返回](../../README.md)
