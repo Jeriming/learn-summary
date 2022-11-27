@@ -11,4 +11,10 @@ Error: Command failed: C:\windows\system32\cmd.exe /s /c “./configure --disabl
 
 199.232.28.133		raw.githubusercontent.com
 
+以上解决方式总还有其他问题，比如pngquant-bin/vendor/pngquant.exe 文件丢失，总之各种包缺失，
+
+更好最新淘宝镜像：registry=http://registry.npmmirror.com
+
+使用cnpm install
+
 [返回](./index.md)
