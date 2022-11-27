@@ -10,4 +10,8 @@
 
 使用vscode调试vue-cli，可以跟踪vue.config.js的配置，详见：[调试 vue-cli](./debug.md)
 
+### 3. 日常错误处理
+
+详见：[日常错误处理](./error.md)
+
 [返回](../../README.md)
