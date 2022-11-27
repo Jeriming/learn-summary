@@ -17,4 +17,10 @@ Error: Command failed: C:\windows\system32\cmd.exe /s /c “./configure --disabl
 
 使用cnpm install
 
+2. These dependencies were not found: * core-js/modules/es.array.iterator in ./node_modules/@babe
+
+找了node_modules确实没找到core-js这个目录，重新下载下
+
+cnpm install core-js@2 -D
+
 [返回](./index.md)
