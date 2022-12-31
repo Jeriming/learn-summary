@@ -46,4 +46,24 @@ function outFunc(opt) {
 outFunc(123);
 ```
 
+bind小技巧，当在class中使用 addEventListener,removeEventListener 对外暴漏绑定事件和销毁事件this指向问题，上代码：
+```javascript
+class Action {
+  constructor() {
+    // 如果直接绑定 onClickEvent 则打印的this是window
+    this.clickEvent = this.onClickEvent.bind(this);
+  }
+  onClickEvent() {
+    console.log(this);
+  }
+  addEvent() {
+    window.addEventListener('click', this.clickEvent)
+  }
+  removeEvent() {
+    window.removeEventListener('click', this.clickEvent)
+  }
+}
+```
+
+
 [返回](./js.md)
