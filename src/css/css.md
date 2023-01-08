@@ -25,4 +25,8 @@ Block Formatting Contexts (块级格式化上下文)，BFC 特性的元素可以
 
 CSS 可继承和不可继承属性。详见：[CSS 可继承和不可继承属性](./css-extend.md)
 
+## 7. CSS滚动吸附效果
+
+CSS滚动吸附效果。详见：[CSS滚动吸附效果](./scroll-snap.md)
+
 [返回](../../README.md)
