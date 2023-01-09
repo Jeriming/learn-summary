@@ -313,4 +313,10 @@ Object.is(+0, -0);                // false
 Object.is(NaN, 0/0);              // true
 Object.is(NaN, Number.NaN)        // true
 
+13. sort按照字典序排序
+```javascript
+const names = ['上海', '北京', '杭州', '广州', '深圳', '西安', '武汉']
+names.sort((i,j) => i.localeCompare(j));
+```
+
 [返回](./js.md)
