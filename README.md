@@ -40,3 +40,5 @@
 ## 感悟
 
 详见：[感悟](./src/comprehension/index.md)
+
+git mac commit push test
