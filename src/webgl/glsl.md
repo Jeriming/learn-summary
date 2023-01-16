@@ -14,4 +14,18 @@
 | inout      | 传入函数，同时在函数中被赋值，并被传出 | 传入变量的引用，函数会用到变量的初始值，然后修改变量的值。会影响到函数外部传入的变量                             |
 | <无：默认> | 将一个值传给函数                       | 和 in 一样                                                                                                       |
 
+2. 内置函数
+
+除了允许用户自定义函数，GLSL ES 还提供了很多常用的内置函数，下表概括了 GLSL ES 的内置函数：
+| 类别 | 内置函数 |
+| ---------- | ---------------- |
+| 角度函数 | radians（角度制转弧度制），degrees（弧度制转角度制） |
+| 三角函数 | sin,cos,tan,asin,acos,atan |
+| 指数函数 | pow,exp,log,exp2,log2,sqrt,inversesqrt |
+| 通用函数 | abs,min,max,mod,sign,floor,ceil,clamp,mix,step,smoothstep,fract |
+| 几何函数 | length,distance,dot,cross,nor-malize,reflect,faceforward |
+| 矩阵函数 | matrixCmpMult（逐元素乘法） |
+| 矢量函数 | lessThan,lessThanEqual,greaterThan,greaterThanEqual,equal,notEqual,any,all,not |
+| 纹理查询函数 | texture2D,textureCube,texture2DProj,texture2DLod,textureCubeLod,texture2DProjLod |
+
 [返回](./index.md)
