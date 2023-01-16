@@ -8,5 +8,6 @@
 - [XSS攻击和CSRF攻击](./xss-csrf.md)
 - [https原理](./https.md)
 - [git一些杂知识点](./git.md)
+- [c#杂谈](./c%23.md)
 
 [返回](../../README.md)
