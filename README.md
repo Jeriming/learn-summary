@@ -41,4 +41,4 @@
 
 详见：[感悟](./src/comprehension/index.md)
 
-git mac commit push test
+2023.1.17年前暂停更新，年后再说，^_^
