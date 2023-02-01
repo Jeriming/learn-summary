@@ -14,4 +14,6 @@
 1.5倍获取的图片是：elva-fairy-480w.jpg，
 两倍屏获取的图片是：elva-fairy-640w.jpg
 
+MDN链接：[响应式图片](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
+
 [返回](./index.md)
