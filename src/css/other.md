@@ -66,4 +66,18 @@ background-image: radial-gradient(transparent 1px,var(--bg-color) 1px);
 backdrop-filter: saturate(50%) blur(4px);
 ```
 
+## 4. white-space word-break word-wrap三者的区别
+
+先看三者的参数及展示的效果都有哪些
+
+white-space: normal|nowrap|pre|pre-wrap|pre-line\
+white-space主要是控制空白符和是否自动换行，用一张图解释：\
+![image](./images/word-break.png)
+
+word-break: normal|break-all|keep-all\
+word-break主要是控制单词如何拆分换行的
+
+word-wrap: 又称 overflow-wrap，参数为：normal|break-word\
+因为word-break容易导致英文单词被强制换行，所以使用word-wrap可以避免单词被分行了
+
 [返回](./css.md)
