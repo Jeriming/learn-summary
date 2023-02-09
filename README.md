@@ -6,6 +6,10 @@
 
 详见：[Javascript](./src/js/js.md)
 
+## HTML篇
+
+详见：[HTML](./src/html/index.md)
+
 ## CSS篇
 
 详见：[CSS](./src/css/css.md)
@@ -40,5 +44,3 @@
 ## 感悟
 
 详见：[感悟](./src/comprehension/index.md)
-
-2023.1.17年前暂停更新，年后再说，^_^
