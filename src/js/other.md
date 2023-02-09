@@ -319,4 +319,39 @@ const names = ['上海', '北京', '杭州', '广州', '深圳', '西安', '武�
 names.sort((i,j) => i.localeCompare(j));
 ```
 
+14. 判断一个对象里面是否存在某个属性
+```javascript
+function hasProperty(obj, key) {
+  return obj[key] !== undefined;
+}
+```
+这种方式无法判断 {a: undefined} 这种
+
+解决这个问题使用：
+```javascript
+function hasProperty(obj, key) {
+  return Object.keys(obj).includes(key);
+}
+```
+但这种方式无法判断不可遍历的变量成员：
+```javascript
+const obj = {};
+Object.defineProperty(obj, 'c', {
+  enumerable: fale,
+  value: 1
+})
+// 显然用Object.keys是无法获取到c的
+function hasProperty(obj, key) {
+  // 可以使用 hasOwnProperty来判断
+  return obj.hasOwnProperty(key);
+}
+```
+这个方法还是没法判断在obj原型链上的属性
+```javascript
+function hasProperty(obj, key) {
+  // 可以使用 hasOwnProperty来判断
+  return key in obj;
+}
+```
+
 [返回](./js.md)
