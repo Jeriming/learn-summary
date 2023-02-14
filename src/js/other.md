@@ -354,4 +354,15 @@ function hasProperty(obj, key) {
 }
 ```
 
+15. 为什么0.1+0.2 ! == 0.3，如何让其相等
+
+解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3
+```javascript
+function numberepsilon(arg1,arg2){                   
+  return Math.abs(arg1 - arg2) < Number.EPSILON;        
+}        
+
+console.log(numberepsilon(0.1 + 0.2, 0.3)); // true
+```
+
 [返回](./js.md)
