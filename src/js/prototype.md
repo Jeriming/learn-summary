@@ -83,7 +83,61 @@ const b2 = new B("hi");
 b1.scopes; // [1, 2]
 ```
 
-### 4. 寄生式组合继承
+### 4. 原型式继承
+
+利用一个空对象作为媒介，将某个空对象直接赋值给构造函数的原型\
+缺点：无法传递参数，原型链继承多个实例的引用类型属性指向相同，可能被篡改。
+```javascript
+function myObject(obj){
+  function F(){}
+  // 构造函数F的原型直接
+  F.prototype = obj;
+  return new F();
+}
+
+var obj = {
+  name: '1',
+  scopes: ['hello', 'world']
+}
+var o1 = myObject(obj);
+obj.name = '2';
+obj.scopes.push('hey');
+
+var o2 = myObject(obj);
+// 此时o2.name也是2了
+```
+
+### 5. 寄生式继承
+
+在原型式继承的基础上，增强对象，返回构造函数，上代码：
+```javascript
+function myObject(obj){
+  function F(){}
+  // 构造函数F的原型直接
+  F.prototype = obj;
+  return new F();
+}
+function createObj(original){
+  var clone = myObject(original); // 通过调用 myObject() 函数创建一个新对象
+  clone.sayHi = function(){  // 以某种方式来增强对象
+    console.log("hi");
+  };
+  return clone; // 返回这个对象
+}
+
+var p = {
+  name: '1',
+  scopes: ['hello', 'world']
+};
+var o1 = createObj(p);
+var o2 = createObj(p);
+
+o1.name = '2';
+o1.scopes.push('3')
+// o2.name还是‘1’，但是o2.scopes还是发生改变了
+```
+由上可知原型式的问题还是没解决？ps: 为了引出寄生组合式继承，这八股文也是煞费苦心啊
+### 6. 寄生式组合继承
 
 原理：通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。\
 优点是：高效率只调用一次父构造函数，并且因此避免了在子原型上面创建不必要，多余的属性。与此同时，原型链还能保持不变；\
