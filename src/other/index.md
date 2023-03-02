@@ -8,6 +8,7 @@
 - [XSS攻击和CSRF攻击](./xss-csrf.md)
 - [跨域问题](./cross-domain.md)
 - [内容安全策略 ( CSP )](./csp.md)
+- [浏览器输入URL后发生了什么](./input-url.md)
 - [https原理](./https.md)
 - [git一些杂知识点](./git.md)
 - [c#杂谈](./cshape.md)
