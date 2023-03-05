@@ -53,7 +53,7 @@ b1 instanceof A; // false;
 b1.scopes.push(3);
 
 const b2 = new B("hi");
-b1.scopes; // [1, 2]
+b2.scopes; // [1, 2]
 ```
 
 ### 3. 组合式继承
