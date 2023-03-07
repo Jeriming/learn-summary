@@ -14,5 +14,6 @@
 - [git一些杂知识点](./git.md)
 - [c#杂谈](./cshape.md)
 - [c#开启Http服务](./cshape-httpserver.md)
+- [MVC、MVP、MVVM的区别](./mvc-mvp-mvvm.md)
 
 [返回](../../README.md)
