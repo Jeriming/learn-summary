@@ -8,6 +8,6 @@
 
 ### 3 [Vue v-model源码解析](./vueVmodel.md)
 
-### 4 [Vue Router源码解析](./vueRouter.md)
+### 4 [Vue Props](./vue-props.md)
 
 [返回](../../README.md)
